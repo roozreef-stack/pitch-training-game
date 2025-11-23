@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>相対音感トレーニング - 音当てゲーム</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>相対音感トレーニング</h1>
+            <p class="subtitle">スケール内の音を聴き取ろう</p>
+        </header>
+
+        <main>
+            <!-- スケール表示エリア -->
+            <div class="scale-display">
+                <div class="scale-label">現在のスケール</div>
+                <div class="scale-name" id="scaleName">--</div>
+            </div>
+
+            <!-- スケールタイプ選択 -->
+            <div class="scale-type-selector">
+                <div class="selector-label">スケールタイプ</div>
+                <div class="selector-buttons">
+                    <label class="radio-btn">
+                        <input type="radio" name="scaleType" value="all" checked>
+                        <span>両方</span>
+                    </label>
+                    <label class="radio-btn">
+                        <input type="radio" name="scaleType" value="major">
+                        <span>メジャーのみ</span>
+                    </label>
+                    <label class="radio-btn">
+                        <input type="radio" name="scaleType" value="minor">
+                        <span>マイナーのみ</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- コントロールボタン -->
+            <div class="controls">
+                <button id="startBtn" class="btn btn-primary">出題</button>
+                <button id="replayBtn" class="btn btn-secondary" disabled>もう一度聴く</button>
+                <button id="nextBtn" class="btn btn-secondary" disabled>次の問題</button>
+            </div>
+
+            <!-- フィードバック表示エリア -->
+            <div class="feedback" id="feedback"></div>
+
+            <!-- 鍵盤エリア -->
+            <div class="keyboard-container">
+                <div class="keyboard-label">音を選んでください</div>
+                <div class="keyboard" id="keyboard">
+                    <button class="key white" data-note="0" data-name="ド">
+                        <span class="note-name">ド</span>
+                        <span class="degree">1</span>
+                    </button>
+                    <button class="key white" data-note="2" data-name="レ">
+                        <span class="note-name">レ</span>
+                        <span class="degree">2</span>
+                    </button>
+                    <button class="key white" data-note="4" data-name="ミ">
+                        <span class="note-name">ミ</span>
+                        <span class="degree">3</span>
+                    </button>
+                    <button class="key white" data-note="5" data-name="ファ">
+                        <span class="note-name">ファ</span>
+                        <span class="degree">4</span>
+                    </button>
+                    <button class="key white" data-note="7" data-name="ソ">
+                        <span class="note-name">ソ</span>
+                        <span class="degree">5</span>
+                    </button>
+                    <button class="key white" data-note="9" data-name="ラ">
+                        <span class="note-name">ラ</span>
+                        <span class="degree">6</span>
+                    </button>
+                    <button class="key white" data-note="11" data-name="シ">
+                        <span class="note-name">シ</span>
+                        <span class="degree">7</span>
+                    </button>
+                    <button class="key white" data-note="12" data-name="ド">
+                        <span class="note-name">ド</span>
+                        <span class="degree">8</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- スコア表示エリア -->
+            <div class="score-board">
+                <div class="score-item">
+                    <div class="score-label">正答数</div>
+                    <div class="score-value">
+                        <span id="correctCount">0</span> / <span id="totalCount">0</span>
+                    </div>
+                </div>
+                <div class="score-item">
+                    <div class="score-label">正答率</div>
+                    <div class="score-value" id="accuracy">--</div>
+                </div>
+                <div class="score-item">
+                    <div class="score-label">連続正解</div>
+                    <div class="score-value" id="streak">0</div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>スケール: メジャー12種類 + マイナー12種類（計24種類）</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
